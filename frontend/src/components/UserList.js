@@ -1,4 +1,4 @@
-import React, { useEffect, useState,useRef } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import './cards.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { getUsers } from '../action/UserAction'
@@ -20,17 +20,19 @@ export const UserList = () => {
     }, [dispatch])
 
     // Delete User Function
-    
+
     const [userId, setUserId] = useState('');
     const closeRef = useRef(null);
 
     const deleteUser = async (id, e) => {
         e.preventDefault();
-        
+
         await axios.delete(`http://localhost:3500/api/v1/user/${id}`);
 
-        closeRef.current.click();
-        dispatch(getUsers())
+        closeRef.current.click()
+        setTimeout(() => {
+            dispatch(getUsers())
+        }, 500);
 
     }
     return (
@@ -45,8 +47,8 @@ export const UserList = () => {
                         </div>
                         <div class="modal-body">
                             <h5 className='mb-4'>Are you sure, you want to Delete?</h5>
-                            <a onClick={(e) => deleteUser(userId,e)} href="/" className="btn btn-danger">Delete</a>
-                            <a ref={closeRef} href="/" className="ms-5 btn btn-secondary"  data-bs-dismiss="modal" aria-label="Close">Cancel</a>
+                            <a onClick={(e) => deleteUser(userId, e)} href="/" className="btn btn-danger">Delete</a>
+                            <a ref={closeRef} href="/" className="ms-5 btn btn-secondary" data-bs-dismiss="modal" aria-label="Close">Cancel</a>
                         </div>
 
                     </div>
