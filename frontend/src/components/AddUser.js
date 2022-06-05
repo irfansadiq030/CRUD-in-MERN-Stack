@@ -22,7 +22,7 @@ export const AddUser = () => {
         setName('');
         setEmail('');
         setImg('');
-        navigate('/users')
+        // navigate('/users')
     }
     return (
         <div>
