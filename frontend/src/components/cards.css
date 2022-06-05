@@ -1,0 +1,27 @@
+.card{
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+    transition: .5s;
+}
+.card:hover{
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    transition: .7s;
+    transform: translateY(-5px);
+    /* cursor: pointer; */
+}
+.card img{
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+.loading_container{
+    width: 100vw;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.card_img{
+    height: 280px;
+    object-fit: cover;
+}
