@@ -67,10 +67,32 @@ exports.getUsers = async (req, resp, next) => {
 
 }
 
-// Update User By ID
+// Update User By ID---getiing user details
 exports.getSingleUser = async (req, resp, next) => {
 
     const user = await userModel.findById(req.params.id);
+
+    if (!user) {
+        return resp.status(404).json({
+            success: false,
+            message: "Users not Found"
+        })
+    }
+
+    return resp.status(200).json({
+        success: true,
+        user
+    })
+}
+
+// Updating User
+
+exports.updateUser = async (req, resp, next) => {
+    const { name, email, img, userId } = req.body
+
+    const user = await userModel.findByIdAndUpdate(userId, {
+        name:name, email:email, img:img
+    })
 
     if (!user) {
         return resp.status(404).json({
@@ -97,7 +119,7 @@ exports.deleteUser = async (req, resp, next) => {
         })
     }
 
-    const result = await userModel.deleteOne({_id:req.params.id})
+    const result = await userModel.deleteOne({ _id: req.params.id })
     resp.status(200).json({
         success: true,
         message: "User Deleted Successfully"
