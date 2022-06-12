@@ -6,8 +6,11 @@ import { SpinnerRoundOutlined } from 'spinners-react';
 import axios from 'axios';
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { ToastContainer,toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const UserList = () => {
+    const notify = () => toast("Wow so easy !");
     const dispatch = useDispatch();
     const { users, loading } = useSelector((state) => state.users)
     useEffect(() => {
@@ -158,7 +161,7 @@ export const UserList = () => {
                         ))
                     }
 
-
+<button onClick={notify}>Notify !</button>
                 </div>
             </div>
         </>
